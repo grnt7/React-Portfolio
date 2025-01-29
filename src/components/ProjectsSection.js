@@ -8,7 +8,7 @@ const projects = [
 	{
 		title: 'React Website',
 		description:
-			'Little Lemon Restaurant Table Booking website fully functional icreated in React as Capstone project completed in Meta Front-End Developer course.',
+			'Little Lemon Restaurant Table Booking website that is fully functional, created in React as Capstone project completed in Meta Front-End Developer course.',
 		getImageSrc: () => require('../images/Frame 1 (2).jpg'),
 	},
 	{
@@ -44,7 +44,7 @@ const ProjectsSection = () => {
 				id='projects-section'>
 				Featured Projects
 			</Heading>
-			<Box
+			<Box 
 				display='grid'
 				gridTemplateColumns='repeat(2,minmax(0,1fr))'
 				gridGap={8}>

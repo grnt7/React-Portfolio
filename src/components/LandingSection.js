@@ -5,13 +5,14 @@ import Photo from "../images/DavidGSQ.jpg";
 
 
 const greeting = "Hello, I am David!";
-const bio1 = "A frontend developer/UX Designer";
+const bio1 = "A Front-end developer/UX Designer";
 const bio2 = "specialised in React";
 
 // Implement the UI for the LandingSection component according to the instructions.
 // Use a combination of Avatar, Heading and VStack components.
 const LandingSection = () => (
   <FullScreenSection
+  
     justifyContent="center"
     alignItems="center"
     isDarkBackground
@@ -21,7 +22,7 @@ const LandingSection = () => (
  <VStack>
  <Image
   borderRadius='full'
-  boxSize='150px'
+  boxSize='200px'
   src={Photo}
   alt='DG'
 />

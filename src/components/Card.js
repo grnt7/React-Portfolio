@@ -18,7 +18,7 @@ const Card = ({ title, description, imageSrc }) => {
 				boxShadow: 'lg',
 				textDecoration: 'none',
 			}}>
-			<Image
+			<Image height="590px"
 				src={imageSrc} 
 				alt={title}
 				
@@ -41,7 +41,7 @@ const Card = ({ title, description, imageSrc }) => {
 				justify='space-between'
 				
 				w='20%'>
-				<Text fontSize='sm'>See More</Text>
+				<Text fontSize='sm'><a href= "https://zingy-bavarois-d1368f.netlify.app/">See More</a></Text>
 				<FontAwesomeIcon
 					icon={faArrowRight}
 					size='1x'
