@@ -1,6 +1,8 @@
 import React from 'react';
+
 import FullScreenSection from './FullScreenSection';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Link, } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Card from './Card';
 
 
@@ -10,24 +12,49 @@ const projects = [
 		description:
 			'Little Lemon Restaurant Table Booking website that is fully functional, created in React as Capstone project completed in Meta Front-End Developer course.',
 		getImageSrc: () => require('../images/Frame 1 (2).jpg'),
-	},
+		link: (
+			<Link href="https://zingy-bavarois-d1368f.netlify.app/" isExternal target="_blank" rel="noopener noreferrer">
+			  <ExternalLinkIcon mx='2px' />
+			</Link>
+		  ),
+		
+  },
+	
 	{
 		title: 'Dog Walking App',
 		description:
 			'UX Design Project with full case study created within Google UX Design professional course 🔥️',
 		getImageSrc: () => require('../images/iPhone 14 Pro Mockup.png'),
+		link:(
+		<Link href="https://1419e741-9c9d-4c80-bf74-796b8fc9d247.filesusr.com/ugd/3b39b8_da9243c615474a27868786ca121ab8ea.pdf" isExternal target="_blank" rel="noopener noreferrer">
+			  <ExternalLinkIcon mx='2px' />
+			</Link>
+		  ),
+		
+		 
 	},
+	
 	{
 		title: 'Photo Gallery',
 		description:
 			'CSS Flexbox Photo Gallery of Cats. Project created as part of Freecodecamp Responsive Website Design Course.',
 		getImageSrc: () => require('../images/CATSGALLERY.jpeg'),
+		link: (
+			<Link href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-css-flexbox-by-building-a-photo-gallery/step-24" isExternal target="_blank" rel="noopener noreferrer">
+			  <ExternalLinkIcon mx='2px' />
+			</Link>
+		  ),
 	},
 	{
 		title: 'Typography',
 		description:
 			'Learn CSS Grid. HTML and CSS Typography project created within Freecodecamp responsive website design course.',
 		getImageSrc: () => require('../images/CSSgrid Magazine.jpg'),
+		link: (
+			<Link href="https://www.freecodecamp.org/learn/full-stack-developer/workshop-magazine/step-79" isExternal target="_blank" rel="noopener noreferrer">
+			 <ExternalLinkIcon mx='2px' />
+			</Link>
+		  ),
 	},
 ];
 
@@ -54,6 +81,8 @@ const ProjectsSection = () => {
 						title={project.title}
 						description={project.description}
 						imageSrc={project.getImageSrc()}
+						link={project.link} 
+						pdfPath={project.pdfPath1} 
 					/>
 				))}
 			</Box>

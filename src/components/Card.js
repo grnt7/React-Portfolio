@@ -1,12 +1,14 @@
-import {  HStack, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import {  HStack, Heading, Image, Text, VStack, } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
-const Card = ({ title, description, imageSrc }) => {
+
+const Card = ({ title, description, imageSrc, link, pdfPath1}) => {
   return (
 		<VStack
 			w='100%'
+
 			bg='white'
 			color='black'
 			borderRadius='lg'
@@ -18,7 +20,7 @@ const Card = ({ title, description, imageSrc }) => {
 				boxShadow: 'lg',
 				textDecoration: 'none',
 			}}>
-			<Image height="590px"
+			<Image h="590px" w="590px"
 				src={imageSrc} 
 				alt={title}
 				
@@ -41,10 +43,21 @@ const Card = ({ title, description, imageSrc }) => {
 				justify='space-between'
 				
 				w='20%'>
-				<Text fontSize='sm'><a href= "https://zingy-bavarois-d1368f.netlify.app/">See More</a></Text>
+					 <div> 
+          {pdfPath1 && ( 
+            <a href={pdfPath1} download> 
+              Download PDF 1 
+            </a>
+          )}
+		 
+		  </div>
+					
+				<Text fontSize='sm'>{link}See More</Text>
+				
 				<FontAwesomeIcon
 					icon={faArrowRight}
 					size='1x'
+					
 				/>
 			</HStack>
 		</VStack>
