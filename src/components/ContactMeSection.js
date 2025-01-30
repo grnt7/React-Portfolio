@@ -11,6 +11,7 @@ import {
   Select,
   Textarea,
   VStack,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import FullScreenSection from "./FullScreenSection";
@@ -57,7 +58,9 @@ const LandingSection = () => {
       py={16}
       spacing={8}
     >
-      <VStack  w="1024px" p={32} alignItems="flex-start">
+      <VStack  display="flex" flexWrap="wrap" justifyContent="center" w="1024px" p={32} alignItems="flex-start"   w={useBreakpointValue({ base: 'full', md: '1024px' })} // Adjust max-width on medium screens
+        p={useBreakpointValue({ base: '16', md: '32' })} // Adjust padding on medium screens
+      >
         <Heading as="h1" id="contactme-section">
           Contact me
         </Heading>
@@ -101,7 +104,7 @@ const LandingSection = () => {
                 {...formik.getFieldProps("comment")}/>
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
-              <Button type="submit" colorScheme="purple" width="full">
+              <Button type="submit" colorScheme="purple" width={useBreakpointValue({ base: 'full', md: 'auto' })}>
                 Submit
               </Button>
             </VStack>

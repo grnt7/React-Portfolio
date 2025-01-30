@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,  } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -33,6 +33,7 @@ const socials = [
 ];
 
 const Header = () => {
+ 
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -56,12 +57,15 @@ const Header = () => {
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
     >
-      <Box color="white" maxWidth="1280px" margin="0 auto">
+      <Box color="white" maxWidth="1280px" margin="0 auto"  >
         <HStack
           px={16}
           py={4}
           justifyContent="space-between"
           alignItems="center"
+          display="flex"
+          flexWrap="wrap"
+          
         >
           <nav>
             {/* Add social media links based on the `socials` data */}

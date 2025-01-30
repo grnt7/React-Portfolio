@@ -51,7 +51,7 @@ const projects = [
 			'Learn CSS Grid. HTML and CSS Typography project created within Freecodecamp responsive website design course.',
 		getImageSrc: () => require('../images/CSSgrid Magazine.jpg'),
 		link: (
-			<Link href="https://zingy-bavarois-d1368f.netlify.app/" isExternal target="_blank" rel="noopener noreferrer">
+			<Link href="https://www.freecodecamp.org/learn/full-stack-developer/workshop-magazine/step-79" isExternal target="_blank" rel="noopener noreferrer">
 			 <ExternalLinkIcon mx='2px' />
 			</Link>
 		  ),
@@ -71,7 +71,7 @@ spacing={8}
 <Heading as='h1' id='projects-section'>
   Featured Projects
 </Heading>
-<Box display={{ base: 'flex', md: 'grid' }} flexWrap="wrap" justifyContent="space-between">
+<Box display={{ base: 'flex', md: 'grid' }} flexWrap="wrap" justifyContent="center" >
   {/* Use useBreakpointValue for responsive layout */}
   {useBreakpointValue({
 	base: (
@@ -89,9 +89,9 @@ spacing={8}
 		))}
 	  </Flex>
 	),
-	md: (
+	md:(
 	  <Grid
-		templateColumns={{ md: 'repeat(auto-fit, minmax(300px, 1fr))' }}
+	  templateColumns={{ md: 'repeat(2,1fr)' }}
 		gap={6}
 	  >
 		{/* Render cards in Grid layout for medium and larger screens */}
