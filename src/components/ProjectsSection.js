@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FullScreenSection from './FullScreenSection';
-import { Box, Grid, Flex, Heading, Link, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Grid, Flex, Heading, Link,  useBreakpointValue } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Card from './Card';
 
@@ -75,7 +75,7 @@ spacing={8}
   {/* Use useBreakpointValue for responsive layout */}
   {useBreakpointValue({
 	base: (
-	  <Flex flexWrap="wrap" justifyContent="space-between">
+	  <Flex flexWrap="wrap" justifyContent="space-between" >
 		{/* Render cards in Flex layout for mobile */}
 		{projects.map((project) => (
 		  <Card
@@ -93,6 +93,7 @@ spacing={8}
 	  <Grid
 	  templateColumns={{ md: 'repeat(2,1fr)' }}
 		gap={6}
+		
 	  >
 		{/* Render cards in Grid layout for medium and larger screens */}
 		{projects.map((project) => (

@@ -58,7 +58,7 @@ const LandingSection = () => {
       py={16}
       spacing={8}
     >
-      <VStack  display="flex" flexWrap="wrap" justifyContent="center" w="1024px" p={32} alignItems="flex-start"   w={useBreakpointValue({ base: 'full', md: '1024px' })} // Adjust max-width on medium screens
+      <VStack  display="flex" flexWrap="wrap" justifyContent="center"  p={32} alignItems="flex-start"  w={useBreakpointValue({ base: 'full', md: '1024px' })} // Adjust max-width on medium screens
         p={useBreakpointValue({ base: '16', md: '32' })} // Adjust padding on medium screens
       >
         <Heading as="h1" id="contactme-section">

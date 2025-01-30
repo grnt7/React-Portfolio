@@ -65,7 +65,7 @@ const Header = () => {
           alignItems="center"
           display="flex"
           flexWrap="wrap"
-          justify-Content={{ base: "center", md: "flex-start" }} // Center on mobile, left on larger screens
+          justify-Content={{ base: "center", md: "space-between" }} // Center on mobile, left on larger screens
           w="100%" // Ensure full width on all screens for centering on mobile
         >
           <nav>

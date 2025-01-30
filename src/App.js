@@ -6,6 +6,8 @@ import ContactMeSection from "./components/ContactMeSection";
 import Footer from "./components/Footer";
 import { AlertProvider } from "./context/alertContext";
 import Alert from "./components/Alert";
+import GoToTop from "./components/GoToTop";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <LandingSection />
           <ProjectsSection />
           <ContactMeSection />
+          <GoToTop/>
           <Footer />
           <Alert />
         </main>
