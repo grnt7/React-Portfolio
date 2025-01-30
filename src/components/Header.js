@@ -7,7 +7,7 @@ import {
   faMedium,
   faStackOverflow,
 } from "@fortawesome/free-brands-svg-icons";
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, useBreakpointValue} from "@chakra-ui/react";
 
 const socials = [
   {
@@ -33,6 +33,9 @@ const socials = [
 ];
 
 const Header = () => {
+
+ 
+    const isSmallerScreen = useBreakpointValue({ base: true, md: false });
  
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
@@ -57,44 +60,43 @@ const Header = () => {
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
     >
-      <Box color="white" maxWidth="1280px" margin="0 auto"  >
+      <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
           px={16}
           py={4}
           justifyContent="space-between"
           alignItems="center"
-          display="flex"
-          flexWrap="wrap"
-          justify-Content={{ base: "center", md: "space-between" }} // Center on mobile, left on larger screens
-          w="100%" // Ensure full width on all screens for centering on mobile
+          flexDirection={isSmallerScreen ? "column" : "row"} // Stack on smaller screens
+          spacing={isSmallerScreen ? 4 : 8} // Adjust spacing
         >
-          <nav>
-            {/* Add social media links based on the `socials` data */}
-            <HStack spacing={8}>
-              {
-                socials.map((social) => 
-                  <a href={social.url}>
-                    <FontAwesomeIcon icon={social.icon} size="2x" />
-              
-                  </a>)
-              }
-            </HStack>
-          </nav>
-          <nav>
-            {/* Add links to Projects and Contact me section */}
-            <HStack spacing={8}>
-              <a href="#projects" onClick={handleClick("projects")}> 
-               Projects 
-             </a> 
-             <a href="#contactme" onClick={handleClick("contactme")}> 
-               Contact Me 
-             </a> 
-              
-            </HStack>
-          </nav>
+          <HStack
+            spacing={8}
+            justifyContent={isSmallerScreen ? "center" : "flex-start"} // Align left on larger
+            w={isSmallerScreen ? "full" : "auto"} // Full width on smaller screens
+          >
+            {socials.map((social) => (
+              <a href={social.url} key={social.icon}>
+                <FontAwesomeIcon icon={social.icon} size="2x" />
+              </a>
+            ))}
+          </HStack>
+
+          <HStack
+            spacing={8}
+            justifyContent={isSmallerScreen ? "center" : "flex-end"} // Align right on larger
+            w={isSmallerScreen ? "full" : "auto"} // Full width on smaller screens
+          >
+            <a href="#projects" onClick={handleClick("projects")}>
+              Projects
+            </a>
+            <a href="#contactme" onClick={handleClick("contactme")}>
+              Contact Me
+            </a>
+          </HStack>
         </HStack>
       </Box>
     </Box>
   );
 };
+
 export default Header;
