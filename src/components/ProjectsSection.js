@@ -71,11 +71,15 @@ spacing={8}
 <Heading as='h1' id='projects-section'>
   Featured Projects
 </Heading>
-<Box display={{ base: 'flex', md: 'grid' }} flexWrap="wrap" justifyContent="center" >
+<Box display={{ base: 'flex', md: 'grid' }} 
+flexWrap="wrap" 
+justifyContent="center" 
+w="full"
+maxW="container.lg">
   {/* Use useBreakpointValue for responsive layout */}
   {useBreakpointValue({
 	base: (
-	  <Flex flexWrap="wrap" justifyContent="space-between" >
+	  <Flex flexWrap="wrap" justifyContent="center" gap={4} >{/*Added Gap */}
 		{/* Render cards in Flex layout for mobile */}
 		{projects.map((project) => (
 		  <Card
@@ -91,8 +95,8 @@ spacing={8}
 	),
 	md:(
 	  <Grid
-	  templateColumns={{ md: 'repeat(2,1fr)' }}
-		gap={6}
+	  templateColumns={{ md: 'repeat(2,1fr)' }} gap={6}
+		
 		
 	  >
 		{/* Render cards in Grid layout for medium and larger screens */}
