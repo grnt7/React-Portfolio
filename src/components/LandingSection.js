@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Heading, VStack,Image, Text} from "@chakra-ui/react";
+import { Avatar, Heading, HStack, VStack,Image, Text} from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import Photo from "../images/DavidGSQ.jpg";
 
@@ -39,7 +39,9 @@ const LandingSection = () => (
       >
         {greeting}
       </Text>
-
+      <HStack w="100%"  // Full width on all screens
+        justifyContent="center" // Center the headings horizontally
+      >
       <Heading
         as="h2"
         size={{ base: "md", md: "lg" }}
@@ -49,6 +51,11 @@ const LandingSection = () => (
       >
         {bio1}
       </Heading>
+      </HStack>
+      <HStack
+       w="100%"  // Full width on all screens
+       justifyContent="center" // Center the headings horizontally
+     >
       <Heading
         as="h2"
         size={{ base: "md", md: "lg" }}
@@ -58,6 +65,7 @@ const LandingSection = () => (
       >
         {bio2}
       </Heading>
+      </HStack>
     </VStack>
   </FullScreenSection>
 );
