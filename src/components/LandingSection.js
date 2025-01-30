@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Heading, VStack,Image,} from "@chakra-ui/react";
+import { Avatar, Heading, VStack,Image, Text} from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import Photo from "../images/DavidGSQ.jpg";
 
@@ -20,7 +20,9 @@ const LandingSection = () => (
     backgroundColor="#2A4365"
   >
    
- <VStack>
+ <VStack align="center" spacing={{ base: 4, md: 6 }} // Responsive spacing
+      p={{ base: 4, md: 6 }} // Responsive padding
+    >
  <Image
   borderRadius='full'
   boxSize='200px'
@@ -28,11 +30,34 @@ const LandingSection = () => (
   alt='DG'
 />
   
+
   
-  
-      <p>{greeting}</p>
-      <Heading>{bio1}</Heading>
-      <Heading>{bio2}</Heading>
+<Text
+        fontSize={{ base: "lg", md: "xl" }}
+        textAlign="center"
+        maxW={{ base: "90%", md: "80%" }} // Control max width for readability
+      >
+        {greeting}
+      </Text>
+
+      <Heading
+        as="h2"
+        size={{ base: "md", md: "lg" }}
+        textAlign="center"  // Center the text
+        maxW={{ base: "90%", md: "80%" }} // Responsive max width
+        noOfLines={3} // Add noOfLines for long text
+      >
+        {bio1}
+      </Heading>
+      <Heading
+        as="h2"
+        size={{ base: "md", md: "lg" }}
+        textAlign="center" // Center the text
+        maxW={{ base: "90%", md: "80%" }} // Responsive max width
+        noOfLines={3} // Add noOfLines for long text
+      >
+        {bio2}
+      </Heading>
     </VStack>
   </FullScreenSection>
 );
