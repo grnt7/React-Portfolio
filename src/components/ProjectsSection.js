@@ -13,7 +13,7 @@ const projects = [
 			'Little Lemon Restaurant Table Booking website that is fully functional, created in React as Capstone project completed in Meta Front-End Developer course.',
 		getImageSrc: () => require('../images/Frame 1 (2).jpg'),
 		link: (
-			<Link href="https://zingy-bavarois-d1368f.netlify.app/" isExternal target="_blank" rel="noopener noreferrer">
+			<Link href="https://little-lemon-booking-capstone.netlify.app/" isExternal target="_blank" rel="noopener noreferrer">
 			  <ExternalLinkIcon mx='2px' />
 			</Link>
 		  ),

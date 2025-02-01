@@ -69,8 +69,8 @@ validationSchema: Yup.object({
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%"> 
-          <form name = "contact v1" data-netlify="true" method="post" onSubmit="onSubmit">
-            <input type= "hidden" name="form-name" value="contact v1"/>
+          <form name="contact" method="POST" data-netlify="true" onSubmit="onSubmit">
+            <input type= "hidden" name="form-name" value="contact"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
