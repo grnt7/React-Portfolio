@@ -73,7 +73,7 @@ validationSchema: Yup.object({
             <input type= "hidden" name="form-name" value="contact"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
-                <FormLabel htmlFor="firstName">Name</FormLabel>
+                <FormLabel htmlFor="name">Name</FormLabel>
                 <Input
                   id="firstName"
                 
