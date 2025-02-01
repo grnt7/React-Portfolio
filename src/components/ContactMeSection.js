@@ -33,7 +33,7 @@ const LandingSection = () => {
    
 //The onSubmit function should perform an API call by using the submit helper from useSubmit hook. Inspect the useSubmit custom hook to see the arguments the submit function expects.
 //The validationSchema should be a Yup schema that validates the form fields. The validation rules are as follows:
-onSubmit: (values) => {submit('https://api.pete.com.com/submit', values)},
+
 validationSchema: Yup.object({
   firstName: Yup.string().required("Required"), 
   email: Yup.string().email("Invalid email address").required("Required"), 
@@ -102,7 +102,7 @@ validationSchema: Yup.object({
                 </Select>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
-                <FormLabel htmlFor="comment">Your message</FormLabel>
+                <FormLabel htmlFor="message">Your message</FormLabel>
                 <Textarea
                 name="message"
                   id="comment"
