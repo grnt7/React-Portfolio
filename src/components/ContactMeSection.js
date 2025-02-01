@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { useFormik } from "formik";
+
 import {
   Box,
   Button,
@@ -32,18 +33,17 @@ const LandingSection = () => {
    
 //The onSubmit function should perform an API call by using the submit helper from useSubmit hook. Inspect the useSubmit custom hook to see the arguments the submit function expects.
 //The validationSchema should be a Yup schema that validates the form fields. The validation rules are as follows:
-    onSubmit: (values) => {submit('https://pete.com/contactme', values)},
-    validationSchema: Yup.object({
-      firstName: Yup.string().required("Required"), 
-      email: Yup.string().email("Invalid email address").required("Required"), 
-      comment: Yup.string() 
-        .min(25, "Must be at least 25 characters") 
-        .required("Required"), 
-    }),
-  });
+onSubmit: (values) => {submit('https://api.pete.com.com/submit', values)},
+validationSchema: Yup.object({
+  firstName: Yup.string().required("Required"), 
+  email: Yup.string().email("Invalid email address").required("Required"), 
+  comment: Yup.string() 
+    .min(25, "Must be at least 25 characters") 
+    .required("Required"), 
+}),
+});
    // e) **Show an alert when the form is submitted successfully**.
-
-  useEffect(() => { 
+   useEffect(() => { 
     if (response) { 
       onOpen(response.type, response.message); 
       if (response.type === 'success') { 
@@ -51,6 +51,10 @@ const LandingSection = () => {
       } 
     } 
   }, [response]);
+
+   //add w3forms addition api here
+   
+  
   return (
     <FullScreenSection
       isDarkBackground
@@ -65,19 +69,21 @@ const LandingSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%"> 
-          <form name="contact" netlify>
+          <form name = "contact v1" data-netlify="true" method="post" onSubmit="onSubmit">
+            <input type= "hidden" name="form-name" value="contact v1"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
                   id="firstName"
-                  name="firstName"
+                
+                   name="name"
                 
                  {...formik.getFieldProps('firstName')}/>
                 <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.email && formik.touched.email}>
-                <FormLabel htmlFor="email">Email Address</FormLabel>
+                <FormLabel htmlFor="email" name="email">Email Address</FormLabel>
                 <Input
                   id="email"
                   name="email"
@@ -98,8 +104,9 @@ const LandingSection = () => {
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
+                name="message"
                   id="comment"
-                  name="comment"
+                
                   height={250}
                 {...formik.getFieldProps("comment")}/>
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
