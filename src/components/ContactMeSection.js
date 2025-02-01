@@ -76,7 +76,7 @@ validationSchema: Yup.object({
                 <FormLabel htmlFor="name">Name</FormLabel>
                 <Input
                   id="firstName"
-                
+                  type="text"
                    name="name"
                 
                  {...formik.getFieldProps('firstName')}/>
@@ -106,7 +106,7 @@ validationSchema: Yup.object({
                 <Textarea
                 name="message"
                   id="comment"
-                
+                type="text"
                   height={250}
                 {...formik.getFieldProps("comment")}/>
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
