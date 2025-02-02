@@ -69,12 +69,14 @@ validationSchema: Yup.object({
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%"> 
-          <form name="contact" method="POST" data-netlify="true" onSubmit="onSubmit">
+          <form name="contact" method="POST" netlify onSubmit="onSubmit">
             <input type= "hidden" name="form-name" value="contact"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="name" name="name">Name </FormLabel>
+               <input type ="hidden" name="contact" value="contact"/>
                 <Input
+                
                   id="name"
                   type="name"
                    name="name"
@@ -102,7 +104,7 @@ validationSchema: Yup.object({
                 </Select>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
-                <FormLabel htmlFor="message"name ="message">Your message</FormLabel>
+                <FormLabel htmlFor="message">Your message</FormLabel>
                 <Textarea
                 name="message"
                   id="message"
