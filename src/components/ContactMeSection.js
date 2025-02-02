@@ -63,7 +63,7 @@ validationSchema: Yup.object({
       spacing={8}
     >
       <VStack  display="flex" flexWrap="wrap" justifyContent="center"  p={32} alignItems="flex-start"  w={useBreakpointValue({ base: 'full', md: '1024px' })} // Adjust max-width on medium screens
-        p={useBreakpointValue({ base: '16', md: '32' })} // Adjust padding on medium screens
+        py={useBreakpointValue({ base: '16', md: '32' })} // Adjust padding on medium screens
       >
         <Heading as="h1" id="contactme-section">
           Contact me
@@ -73,9 +73,9 @@ validationSchema: Yup.object({
             <input type= "hidden" name="form-name" value="contact"/>
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
-                <FormLabel htmlFor="name">Name</FormLabel>
+                <FormLabel htmlFor="name" name="name">Name </FormLabel>
                 <Input
-                  id="firstName"
+                  id="name"
                   type="name"
                    name="name"
                 
@@ -102,7 +102,7 @@ validationSchema: Yup.object({
                 </Select>
               </FormControl>
               <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
-                <FormLabel htmlFor="message">Your message</FormLabel>
+                <FormLabel htmlFor="message"name ="message">Your message</FormLabel>
                 <Textarea
                 name="message"
                   id="message"
