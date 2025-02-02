@@ -1,6 +1,6 @@
 //Okay, let's completely remove formik and set up your form to work directly with Netlify forms. This will help us isolate whether the issue is with formik or the Netlify setup itself.
 
-JavaScript
+
 
 import React, { useState, useEffect } from "react";
 import {

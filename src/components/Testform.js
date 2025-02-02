@@ -98,7 +98,7 @@ const LandingSection = () => {
                 <Input
                   id="name"
                   type="text"
-                  name="firstName"
+                  name="name"
                   value={formData.firstName}
                   onChange={handleChange}
                 />
