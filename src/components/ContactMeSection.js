@@ -1,5 +1,8 @@
-import React, { useEffect } from "react";
-import { useFormik } from "formik";
+//Okay, let's completely remove formik and set up your form to work directly with Netlify forms. This will help us isolate whether the issue is with formik or the Netlify setup itself.
+
+JavaScript
+
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -13,54 +16,59 @@ import {
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import * as Yup from "yup";
 import FullScreenSection from "./FullScreenSection";
 import { useAlertContext } from "../context/alertContext";
 
 const LandingSection = () => {
   const { onOpen } = useAlertContext();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    email: "",
+    type: "hireMe",
+    comment: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const formik = useFormik({
-    initialValues: {
-      firstName: "",
-      email: "",
-      type: "hireMe",
-      comment: "",
-    },
-    validationSchema: Yup.object({
-      firstName: Yup.string().required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
-      comment: Yup.string()
-        .min(25, "Must be at least 25 characters")
-        .required("Required"),
-    }),
-    onSubmit: (values, { resetForm }) => {  // Key change here
-      console.log("Formik values:", values); // Add this line
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setErrors({ ...errors, [event.target.name]: "" }); // Clear error on change
+  };
 
-      fetch("/", {  // POST to the root of your site
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let newErrors = {};
+    if (!formData.firstName) {
+      newErrors.firstName = "Required";
+    }
+    if (!formData.email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+    if (!formData.comment) {
+      newErrors.comment = "Required";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {  // No errors, proceed with submission
+      fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...values }), // Encode form data
+        body: encode({ "form-name": "contact", ...formData }),
       })
         .then(() => {
           onOpen("success", "Message sent successfully!");
-          resetForm(); // Clear the form after successful submission
+          setFormData({ firstName: "", email: "", type: "hireMe", comment: "" }); // Reset form
+          setErrors({}); // Clear any previous errors
         })
         .catch((error) => {
           onOpen("error", "Failed to send message.");
           console.error("Error:", error);
         });
-    },
-  });
-
-  useEffect(() => {
-    if (formik.submitCount > 0 && !formik.isValid) { // Check for errors after submit attempt
-        onOpen("error", "Please correct the form errors.")
     }
-}, [formik.errors, formik.submitCount, formik.isValid, onOpen]);
+  };
 
-
-  const encode = (data) => { // Helper function to encode form data
+  const encode = (data) => {
     return Object.keys(data)
       .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
@@ -86,53 +94,56 @@ const LandingSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-          <form name="contact" method="POST" data-netlify="true" onSubmit={formik.handleSubmit}> {/* Use formik's handleSubmit */}
-            <input type="hidden" name="contact" value="contact" />
-            <VStack spacing={4}>
-              <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
-                <FormLabel htmlFor="name">Name</FormLabel>
-                <Input
-                  id="name"
-                  type="text" // Corrected type to "text"
-                  name="firstName" // Important: Match name to formik's values
-                  {...formik.getFieldProps("firstName")}
-                />
-                <FormErrorMessage>{formik.errors.firstName}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={!!formik.errors.email && formik.touched.email}>
-                <FormLabel htmlFor="email">Email Address</FormLabel>
-                <Input
-                  id="email"
-                  type="email"
-                  name="email" // Important: Match name to formik's values
-                  {...formik.getFieldProps("email")}
-                />
-                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" name="type" {...formik.getFieldProps("type")}> {/* Use formik's select handling */}
-                  <option value="hireMe">Freelance project proposal</option>
-                  <option value="openSource">Open source consultancy session</option>
-                  <option value="other">Other</option>
-                </Select>
-              </FormControl>
-              <FormControl isInvalid={!!formik.errors.comment && formik.touched.comment}>
-                <FormLabel htmlFor="message">Your message</FormLabel>
-                <Textarea
-                  id="message"
-                  name="comment" // Important: Match name to formik's values
-                  height={250}
-                  {...formik.getFieldProps("comment")}
-                />
-                <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
-              </FormControl>
-              <Button type="submit" colorScheme="purple" width={useBreakpointValue({ base: 'full', md: 'auto' })}>
-                Submit
-              </Button>
-            </VStack>
-          </form>
-        </Box>
+        <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
+          <input type="hidden" name="form-name" value="contact" />
+          <VStack spacing={4}>
+            <FormControl isInvalid={!!errors.firstName}>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <Input
+                id="name"
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+              <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={!!errors.email}>
+              <FormLabel htmlFor="email">Email Address</FormLabel>
+              <Input
+                id="email"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <FormErrorMessage>{errors.email}</FormErrorMessage>
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="type">Type of enquiry</FormLabel>
+              <Select id="type" name="type" value={formData.type} onChange={handleChange}>
+                <option value="hireMe">Freelance project proposal</option>
+                <option value="openSource">Open source consultancy session</option>
+                <option value="other">Other</option>
+              </Select>
+            </FormControl>
+            <FormControl isInvalid={!!errors.comment}>
+              <FormLabel htmlFor="message">Your message</FormLabel>
+              <Textarea
+                id="message"
+                name="comment"
+                value={formData.comment}
+                onChange={handleChange}
+                height={250}
+              />
+              <FormErrorMessage>{errors.comment}</FormErrorMessage>
+            </FormControl>
+            <Button type="submit" colorScheme="purple" width={useBreakpointValue({ base: 'full', md: 'auto' })}>
+              Submit
+            </Button>
+          </VStack>
+        </form>
+      </Box>
       </VStack>
     </FullScreenSection>
   );
