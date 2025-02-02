@@ -102,7 +102,7 @@ const LandingSection = () => {
               <Input
                 id="name"
                 type="text"
-                name="firstName"
+                name="Name"
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -131,7 +131,7 @@ const LandingSection = () => {
               <FormLabel htmlFor="message">Your message</FormLabel>
               <Textarea
                 id="message"
-                name="comment"
+                name="message"
                 value={formData.comment}
                 onChange={handleChange}
                 height={250}
