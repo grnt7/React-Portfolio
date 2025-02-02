@@ -35,6 +35,8 @@ const LandingSection = () => {
         .required("Required"),
     }),
     onSubmit: (values, { resetForm }) => {  // Key change here
+      console.log("Formik values:", values); // Add this line
+
       fetch("/", {  // POST to the root of your site
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -85,7 +87,7 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
           <form name="contact" method="POST" data-netlify="true" onSubmit={formik.handleSubmit}> {/* Use formik's handleSubmit */}
-            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="contact" value="contact" />
             <VStack spacing={4}>
               <FormControl isInvalid={!!formik.errors.firstName && formik.touched.firstName}>
                 <FormLabel htmlFor="name">Name</FormLabel>
