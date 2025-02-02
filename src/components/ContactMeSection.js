@@ -95,18 +95,18 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
         <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="contact" value="contact" />
           <VStack spacing={4}>
-            <FormControl isInvalid={!!errors.firstName}>
+            <FormControl isInvalid={!!errors.Name}>
               <FormLabel htmlFor="name">Name</FormLabel>
               <Input
                 id="name"
                 type="text"
                 name="Name"
-                value={formData.firstName}
+                value={formData.Name}
                 onChange={handleChange}
               />
-              <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+              <FormErrorMessage>{errors.Name}</FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={!!errors.email}>
               <FormLabel htmlFor="email">Email Address</FormLabel>
@@ -127,12 +127,12 @@ const LandingSection = () => {
                 <option value="other">Other</option>
               </Select>
             </FormControl>
-            <FormControl isInvalid={!!errors.comment}>
+            <FormControl isInvalid={!!errors.message}>
               <FormLabel htmlFor="message">Your message</FormLabel>
               <Textarea
                 id="message"
                 name="message"
-                value={formData.comment}
+                value={formData.message}
                 onChange={handleChange}
                 height={250}
               />
