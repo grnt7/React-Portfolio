@@ -51,28 +51,17 @@ const LandingSection = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {  // No errors, proceed with submission
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...formData }),
-      })
-        .then(() => {
+      // *** REMOVE THE FETCH CALL ENTIRELY ***
+      
           onOpen("success", "Message sent successfully!");
-          setFormData({ name: "", email: "", type: "hireMe", message: "" }); // Reset form
+          setFormData({ firstName: "", email: "", type: "hireMe", message: "" }); // Reset form
           setErrors({}); // Clear any previous errors
-        })
-        .catch((error) => {
-          onOpen("error", "Failed to send message.");
-          console.error("Error:", error);
-        });
+       
+        
     }
   };
 
-  const encode = (data) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  };
+  
 
   return (
     <FullScreenSection
