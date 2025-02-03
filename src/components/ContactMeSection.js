@@ -44,24 +44,35 @@ const LandingSection = () => {
     if (!formData.email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
       newErrors.email = "Invalid email address";
     }
-    if (!formData.message) {
-      newErrors.message = "Required";
+    if (!formData.comment) {
+      newErrors.comment = "Required";
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {  // No errors, proceed with submission
-      // *** REMOVE THE FETCH CALL ENTIRELY ***
-      
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...formData }),
+      })
+        .then(() => {
           onOpen("success", "Message sent successfully!");
-          setFormData({ firstName: "", email: "", type: "hireMe", message: "" }); // Reset form
+          setFormData({ name: "", email: "", type: "hireMe", message: "" }); // Reset form
           setErrors({}); // Clear any previous errors
-       
-        
+        })
+        .catch((error) => {
+          onOpen("error", "Failed to send message.");
+          console.error("Error:", error);
+        });
     }
   };
 
-  
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
 
   return (
     <FullScreenSection
@@ -84,7 +95,8 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
         <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-       
+        <input type="hidden" name="contact" value="contact" />
+
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
               <FormLabel htmlFor="firstName">Name</FormLabel>
