@@ -51,7 +51,7 @@ const LandingSection = () => {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {  // No errors, proceed with submission
-      /*fetch("/", {
+      fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "contact", ...formData }),
@@ -73,7 +73,7 @@ const LandingSection = () => {
       .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
   };
-*/
+
   return (
     <FullScreenSection
       isDarkBackground
@@ -95,18 +95,18 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
         <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-          
+          <input type="hidden" name="contact" value="contact" />
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
               <FormLabel htmlFor="firstName">Name</FormLabel>
               <Input
-                id="firstName"
+                id="name"
                 type="text"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
               />
-              <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+              <FormErrorMessage>{errors.Name}</FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={!!errors.email}>
               <FormLabel htmlFor="email">Email Address</FormLabel>
@@ -130,8 +130,7 @@ const LandingSection = () => {
             <FormControl isInvalid={!!errors.comment}>
               <FormLabel htmlFor="comment">Your message</FormLabel>
               <Textarea
-                id="comment"
-                type="text"
+                id="message"
                 name="comment"
                 value={formData.comment}
                 onChange={handleChange}
