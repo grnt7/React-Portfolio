@@ -24,7 +24,7 @@ const LandingSection = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     email: "",
-    type: "hireMe",
+    type: "",
     comment: "",
   });
   const [errors, setErrors] = useState({});
@@ -44,8 +44,8 @@ const LandingSection = () => {
     if (!formData.email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
       newErrors.email = "Invalid email address";
     }
-    if (!formData.comment) {
-      newErrors.comment = "Required";
+    if (!formData.message) {
+      newErrors.message = "Required";
     }
 
     setErrors(newErrors);
@@ -58,7 +58,7 @@ const LandingSection = () => {
       })
         .then(() => {
           onOpen("success", "Message sent successfully!");
-          setFormData({ firstName: "", email: "", type: "hireMe", comment: "" }); // Reset form
+          setFormData({ name: "", email: "", type: "hireMe", message: "" }); // Reset form
           setErrors({}); // Clear any previous errors
         })
         .catch((error) => {
@@ -95,15 +95,15 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
         <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="contact" value="contact" />
+       
           <VStack spacing={4}>
-            <FormControl isInvalid={!!errors.Name}>
-              <FormLabel htmlFor="name">Name</FormLabel>
+            <FormControl isInvalid={!!errors.firstName}>
+              <FormLabel htmlFor="firstName">Name</FormLabel>
               <Input
-                id="name"
+                id="firstName"
                 type="text"
-                name="Name"
-                value={formData.Name}
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
               />
               <FormErrorMessage>{errors.Name}</FormErrorMessage>
@@ -127,12 +127,12 @@ const LandingSection = () => {
                 <option value="other">Other</option>
               </Select>
             </FormControl>
-            <FormControl isInvalid={!!errors.message}>
-              <FormLabel htmlFor="message">Your message</FormLabel>
+            <FormControl isInvalid={!!errors.comment}>
+              <FormLabel htmlFor="comment">Your message</FormLabel>
               <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
+                id="comment"
+                name="comment"
+                value={formData.comment}
                 onChange={handleChange}
                 height={250}
               />
