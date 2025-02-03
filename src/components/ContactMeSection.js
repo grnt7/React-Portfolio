@@ -98,11 +98,11 @@ const LandingSection = () => {
           <input type="hidden" name="contact" value="contact" />
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
-              <FormLabel htmlFor="name">Name</FormLabel>
+              <FormLabel htmlFor="firstName">Name</FormLabel>
               <Input
                 id="name"
                 type="text"
-                name="Name"
+                name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -128,10 +128,10 @@ const LandingSection = () => {
               </Select>
             </FormControl>
             <FormControl isInvalid={!!errors.comment}>
-              <FormLabel htmlFor="message">Your message</FormLabel>
+              <FormLabel htmlFor="comment">Your message</FormLabel>
               <Textarea
                 id="message"
-                name="message"
+                name="comment"
                 value={formData.comment}
                 onChange={handleChange}
                 height={250}
