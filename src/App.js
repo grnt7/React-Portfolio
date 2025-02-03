@@ -19,7 +19,7 @@ function App() {
           <Header />
           <LandingSection />
           <ProjectsSection />
-        <ContactMeSection/>
+       <ContactMeSection />
           <GoToTop/>
           <Footer />
           <Alert />

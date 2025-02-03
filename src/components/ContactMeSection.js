@@ -24,7 +24,7 @@ const LandingSection = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     email: "",
-    type: "",
+    type: "hireMe",
     comment: "",
   });
   const [errors, setErrors] = useState({});
@@ -58,7 +58,7 @@ const LandingSection = () => {
       })
         .then(() => {
           onOpen("success", "Message sent successfully!");
-          setFormData({ name: "", email: "", type: "hireMe", message: "" }); // Reset form
+          setFormData({ firstName: "", email: "", type: "hireMe", comment: "" }); // Reset form
           setErrors({}); // Clear any previous errors
         })
         .catch((error) => {
@@ -95,15 +95,14 @@ const LandingSection = () => {
         </Heading>
         <Box p={6} rounded="md" w="100%">
         <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-        <input type="hidden" name="contact" value="contact" />
-
+          <input type="hidden" name="contact" value="contact" />
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
-              <FormLabel htmlFor="firstName">Name</FormLabel>
+              <FormLabel htmlFor="name">Name</FormLabel>
               <Input
-                id="firstName"
+                id="name"
                 type="text"
-                name="firstName"
+                name="Name"
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -129,10 +128,10 @@ const LandingSection = () => {
               </Select>
             </FormControl>
             <FormControl isInvalid={!!errors.comment}>
-              <FormLabel htmlFor="comment">Your message</FormLabel>
+              <FormLabel htmlFor="message">Your message</FormLabel>
               <Textarea
-                id="comment"
-                name="comment"
+                id="message"
+                name="message"
                 value={formData.comment}
                 onChange={handleChange}
                 height={250}
