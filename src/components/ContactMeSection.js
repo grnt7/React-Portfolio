@@ -94,13 +94,14 @@ const LandingSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
-        <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-          <input type="hidden" name="contact" value="contact" />
+        <form action="https://api.web3forms.com/submit" method="POST">
+          
+          <input type="hidden" name="apikey" value="fb1cfe82-5f46-4e3d-bf19-3a4dd9888307"></input>
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
               <FormLabel htmlFor="firstName">Name</FormLabel>
               <Input
-                id="name"
+                id="firstName"
                 type="text"
                 name="firstName"
                 value={formData.firstName}
@@ -130,7 +131,7 @@ const LandingSection = () => {
             <FormControl isInvalid={!!errors.comment}>
               <FormLabel htmlFor="comment">Your message</FormLabel>
               <Textarea
-                id="message"
+                id="comment"
                 name="comment"
                 value={formData.comment}
                 onChange={handleChange}

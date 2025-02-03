@@ -1,45 +1,47 @@
-import React from "react";
+import { useState, useEffect } from "react";
+// npm install react-hook-form @web3forms/react
+import { useForm } from "react-hook-form";
+import useWeb3Forms from "@web3forms/react";
 
-function Contact() {
-  const [result, setResult] = React.useState("");
+export default function Contact() {
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Sending....");
-    const formData = new FormData(event.target);
+  const {register, reset, handleSubmit} = useForm();
 
-    formData.append("access_key", "fb1cfe82-5f46-4e3d-bf19-3a4dd9888307");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [result, setResult] = useState(null);
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+  const accessKey = "YOUR_ACCESS_KEY_HERE";
 
-    const data = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
-    }
-  };
+  const { submit: onSubmit } = useWeb3Forms({
+    access_key: accessKey,
+    settings: {
+      from_name: "Acme Inc",
+      subject: "New Contact Message from your Website",
+      // ... other settings
+    },
+    onSuccess: (msg, data) => {
+      setIsSuccess(true);
+      setResult(msg);
+      reset();
+    },
+    onError: (msg, data) => {
+      setIsSuccess(false);
+      setResult(msg);
+    },
+  });
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input type="text" name="name" required/>
-        <input type="email" name="email" required/>
-        <textarea name="message" required></textarea>
+    <form onSubmit={handleSubmit(onSubmit)}>
+        <input type="text" {...register("name", { required: true })}/>
+        <input type="email" {...register("email", { required: true })}/>
+        <textarea {...register("message", { required: true })}></textarea>
 
         <button type="submit">Submit Form</button>
 
       </form>
-      <span>{result}</span>
 
-    </div>
-  );
+      <div>{result}</div>
+  </div>
+ );
 }
-
-export default Contact;
