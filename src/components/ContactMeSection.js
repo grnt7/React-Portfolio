@@ -67,6 +67,7 @@ const LandingSection = () => {
         });
     }
   };
+  const inputWidth = useBreakpointValue({ base: "full", md: "md" }); // Responsive width
 
   const encode = (data) => {
     return Object.keys(data)
@@ -82,13 +83,10 @@ const LandingSection = () => {
       spacing={8}
     >
       <VStack
-        display="flex"
-        flexWrap="wrap"
         justifyContent="center"
-        p={32}
         alignItems="flex-start"
         w={useBreakpointValue({ base: "full", md: "1024px" })}
-        py={useBreakpointValue({ base: "16", md: "32" })}
+        p={useBreakpointValue({ base: "16", md: "32" })}
       >
         <Heading as="h1" id="contactme-section">
           Contact me
@@ -106,6 +104,7 @@ const LandingSection = () => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
+                w={inputWidth}  // Apply responsive width here
               />
               <FormErrorMessage>{errors.Name}</FormErrorMessage>
             </FormControl>
@@ -117,6 +116,7 @@ const LandingSection = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                w={inputWidth}  // Apply responsive width here
               />
               <FormErrorMessage>{errors.email}</FormErrorMessage>
             </FormControl>
@@ -136,6 +136,7 @@ const LandingSection = () => {
                 value={formData.comment}
                 onChange={handleChange}
                 height={250}
+                w="full" // Make Textarea full width on all screens
               />
               <FormErrorMessage>{errors.comment}</FormErrorMessage>
             </FormControl>
