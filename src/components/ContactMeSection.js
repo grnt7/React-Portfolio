@@ -125,8 +125,8 @@ const LandingSection = () => {
               <FormLabel htmlFor="type">Type of enquiry</FormLabel>
               <Select id="type" name="type" value={formData.type} onChange={handleChange}>
                 <option value="hireMe">Freelance project proposal</option>
-                <option value="openSource">Open source consultancy session</option>
-                <option value="other">Other</option>
+                <option value="openSource">UX Design</option>
+                <option value="other">Front-End Development</option>
               </Select>
             </FormControl>
             <FormControl isInvalid={!!errors.comment}>
