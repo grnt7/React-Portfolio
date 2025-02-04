@@ -25,6 +25,12 @@ code {
   
 }
 
+/* Target the dropdown list (the options container) */
+#type option {  /* Or a more specific selector if needed */
+  background-color: rgb(107, 5, 251); /* Background color of options */
+}
+
+
 .go_to_top
 
 {
