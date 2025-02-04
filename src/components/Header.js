@@ -12,7 +12,7 @@ import { Box, HStack, useBreakpointValue} from "@chakra-ui/react";
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@example.com",
+    url: "mailto: da.grant7@outlook.com",
   },
   {
     icon: faGithub,
