@@ -38,7 +38,7 @@ const projects = [
 		title: 'Photo Gallery',
 		description:
 			'CSS Flexbox Photo Gallery of Cats. Project created as part of Freecodecamp Responsive Website Design Course.',
-		getImageSrc: () => require('../images/CATSGALLERY copy.jpg'),
+		getImageSrc: () => require('../images/CATSGALLERY.jpeg'),
 		link: (
 			<Link href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-css-flexbox-by-building-a-photo-gallery/step-2" isExternal target="_blank" rel="noopener noreferrer">
 			  <ExternalLinkIcon mx='2px' />
