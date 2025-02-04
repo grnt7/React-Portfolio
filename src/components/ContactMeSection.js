@@ -92,9 +92,10 @@ const LandingSection = () => {
           Contact me
         </Heading>
         <Box p={6} rounded="md" w="100%">
+        
         <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="apikey" value="fb1cfe82-5f46-4e3d-bf19-3a4dd9888307"></input>
           
-          <input type="hidden" name="apikey" value="fb1cfe82-5f46-4e3d-bf19-3a4dd9888307"></input>
           <VStack spacing={4}>
             <FormControl isInvalid={!!errors.firstName}>
               <FormLabel htmlFor="firstName">Name</FormLabel>

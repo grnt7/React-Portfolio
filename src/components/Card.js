@@ -1,7 +1,7 @@
 import {  Box,Flex, HStack, Heading, Image, Text, VStack, Link, Spacer} from "@chakra-ui/react";
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+//import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
 
@@ -32,12 +32,13 @@ const Card = ({ title, description, imageSrc, link, pdfPath1}) => {
 
 	  <Text fontSize="sm">
 	  {link} 
- See More  
+ 		See More  
 
 		
 	  </Text>
 
-	  <FontAwesomeIcon icon={faArrowRight} size="1x" />
+	  
+	 
 	</HStack>
   </Flex>
   </Flex>
