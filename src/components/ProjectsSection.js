@@ -11,7 +11,7 @@ const projects = [
 		title: 'React App and Website',
 		description:
 			'Little Lemon Restaurant Table Booking website that is fully functional, created in React as Capstone project completed in Meta Front-End Developer course.',
-		getImageSrc: () => require('../images/Frame 1 (2) copy.jpg'),
+		getImageSrc: () => require('../images/Frame 1 (2)h570px.jpg'),
 		link: (
 			<Link href="https://little-lemon-booking-capstone.netlify.app/" isExternal target="_blank" rel="noopener noreferrer">
 			  <ExternalLinkIcon mx='2px' />
@@ -38,7 +38,7 @@ const projects = [
 		title: 'Photo Gallery',
 		description:
 			'CSS Flexbox Photo Gallery of Cats. Project created as part of Freecodecamp Responsive Design Course.',
-		getImageSrc: () => require('../images/CATSGALLERY.jpeg'),
+		getImageSrc: () => require('../images/CATSGALLERYh600px copy.jpg'),
 		link: (
 			<Link href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-css-flexbox-by-building-a-photo-gallery/step-2" isExternal target="_blank" rel="noopener noreferrer">
 			  <ExternalLinkIcon mx='2px' />
