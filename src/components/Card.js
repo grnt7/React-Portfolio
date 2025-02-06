@@ -8,12 +8,13 @@ import React from "react";
 const Card = ({ title, description, imageSrc, link, pdfPath1}) => {
   return (
 	<Flex direction="column"  w="100%" bg="white" color="black" borderRadius="lg" overflow="hidden" boxShadow="md" _hover={{ boxShadow: "lg", textDecoration: "none" }}> {/* Changed to Flex, added overflow */}
-	<Box  w="100%" overflow="hidden">  {/* 100% on small screens, 50% on medium and up */} 
-	<Image src={imageSrc} alt={title}  objectFit="cover" w="100%" h="100%" loading="lazy" /></Box>
-	<Flex direction="column" flexGrow={3} px={4} py={2} overflow="hidden"> {/* Text content container */}
+	<Box  overflow="hidden" w="100%">
+	<Image src={imageSrc} alt={title}  objectFit="cover" w="100%" h="100%"  aspectRatio ="2/2"loading="lazy" scale="auto" />
+	</Box>
+	<Flex direction="column" flexGrow={1} px={4} py={2} overflow="hidden"> {/* Text content container */}
 	<Box align="start" > {/* Added flexGrow and overflow */}
-		<Spacer/>
-	  <Heading as="h3" size="md" noOfLines={2}> {/* Added noOfLines */}
+		
+	  <Heading as="h3" size="md"> {/* Added noOfLines */}
 		{title}
 	  </Heading>
 	 
@@ -22,7 +23,7 @@ const Card = ({ title, description, imageSrc, link, pdfPath1}) => {
 	  </Text>
 	</Box>
 	<Spacer/>
-	<HStack  justify="bottom" w="100%" mt={2}>
+	<HStack  w="100%" >
 	  <div> 
 		{pdfPath1 && (
 		  <a href={pdfPath1} download>
