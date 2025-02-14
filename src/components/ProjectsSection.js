@@ -26,7 +26,7 @@ const projects = [
 			'UX Design Project with full case study created within Google UX Design professional course 🔥️',
 		getImageSrc: () => require('../images/iPhone 14 Pro Mockup-Recovered.jpg'),
 		link:(
-		<Link href="https://docs.google.com/presentation/d/1d1pDRg1p3aQ8uz2H9NzaPzXVgkIPVW59XpmxZCS6aqI/edit#slide=id.ge4c37861fa_0_559" isExternal target="_blank" rel="noopener noreferrer">
+		<Link href="https://docs.google.com/presentation/d/e/2PACX-1vSA5FI8jpBOk-UhOrHp15AkuB-N1hPRkT3tJaGC7p6rBfXPwu1dUmPbzzlQZANu4J3VvfczSLT2ujOd/pub?start=false&loop=false&delayms=3000" isExternal target="_blank" rel="noopener noreferrer">
 			  <ExternalLinkIcon mx='2px' />
 			</Link>
 		  ),
