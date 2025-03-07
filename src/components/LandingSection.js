@@ -1,10 +1,9 @@
 import React from "react";
 import { Avatar, Heading, HStack, VStack,Image, Text} from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
-import Photo from "../images/DGBWHatSQ.jpg";
 
 
-const greeting = "Hello, I am David!";
+const greeting = "Hello, I am Pete!";
 const bio1 = "A Front-End Developer/UX Designer";
 const bio2 = "Specialised in React";
 
@@ -24,10 +23,11 @@ const LandingSection = () => (
       p={{ base: 4, md: 6 }} // Responsive padding
     >
  <Image
-  borderRadius='full'
-  boxSize='150px'
-  src={Photo}
-  alt='DG'
+       borderRadius='full'
+       size="2xl"
+       name="Segun Adebayo"
+       src="https://i.pravatar.cc/150?img=7"
+     
 />
   
 
@@ -71,3 +71,13 @@ const LandingSection = () => (
 );
 
 export default LandingSection;
+
+
+/*
+
+
+
+
+
+
+*/
